@@ -134,22 +134,39 @@ function plugin_wf_bootstrapjs(){
    * Move buttons from modal-body to modal-footer using className.
    * @returns {undefined}
    */
-  this.moveElement = function(from_id, to_id, class_name){
+  this.moveModalButtons = function(from_id){
     var from = document.getElementById(from_id);
-    var to = document.getElementById(to_id);
-    if(!from || !to){
-      return null;
-    }
-    if(to.getAttribute('data-wf_bootstrapjs_move_elements')===null){
-      var elements = from.getElementsByClassName(class_name);
-      for(var i=0;i<elements.length;i++){
-        to.appendChild(elements[i]);
+    
+    var modal_content = this.getParentNodeByClassname(from_id, 'modal-content');
+    if(modal_content){
+      var elements = modal_content.getElementsByClassName('modal-footer');
+      if(elements){
+        var modal_footer = elements[0];
+        if(modal_footer.getAttribute('data-wf_bootstrapjs_move_elements')===null){
+          var btns = document.getElementById(from_id).getElementsByClassName('btn');
+          for(var i=0;i<btns.length;i++){
+            modal_footer.appendChild(btns[i]);
+          }
+          /**
+           * Set data attribute.
+           */
+          modal_footer.setAttribute('data-wf_bootstrapjs_move_elements', true);
+        }
       }
-      /**
-       * Set data attribute.
-       */
-      to.setAttribute('data-wf_bootstrapjs_move_elements', true);
     }
   }
+  this.getParentNodeByClassname = function(id, className){
+    var element = document.getElementById(id);
+    var parent = element.parentNode;
+    for(var i=0; i<100; i++){
+      if(parent && parent.className==className){
+        return parent;
+      }else if(parent){
+        parent = parent.parentNode;
+      }
+    }
+    return null;
+  }
+  
 }
 var PluginWfBootstrapjs = new plugin_wf_bootstrapjs();
