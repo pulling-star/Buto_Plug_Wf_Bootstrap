@@ -28,7 +28,7 @@ function plugin_wf_bootstrapjs(){
                     type: 'div', 
                     attribute: {class: 'modal-header'},
                     innerHTML: [
-                      {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal'}, innerHTML: 'x'}, 
+                      {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal'}, innerHTML: 'x', idzzz: data.id+'_btn_close'}, 
                       {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: data.lable}
                     ]
                   },
@@ -36,9 +36,7 @@ function plugin_wf_bootstrapjs(){
                   {
                     type: 'div', 
                     attribute: {class: 'modal-footer', id: data.id+'_footer'}, 
-                    innerHTML: [
-                      {type: 'button', attribute: {type: 'button', class: 'btn btn-default', 'data-dismiss': 'modal', id: data.id+'_btn_close'}, innerHTML: 'Close'}
-                    ]
+                    innerHTML: ''
                   }
                 ]
               }
@@ -142,15 +140,11 @@ function plugin_wf_bootstrapjs(){
       var elements = modal_content.getElementsByClassName('modal-footer');
       if(elements){
         var modal_footer = elements[0];
-        if(modal_footer.getAttribute('data-wf_bootstrapjs_move_elements')===null){
-          var btns = document.getElementById(from_id).getElementsByClassName('btn');
-          for(var i=0;i<btns.length;i++){
-            modal_footer.appendChild(btns[i]);
-          }
-          /**
-           * Set data attribute.
-           */
-          modal_footer.setAttribute('data-wf_bootstrapjs_move_elements', true);
+        modal_footer.innerHTML = '';
+        var btns = document.getElementById(from_id).getElementsByClassName('btn');
+        var length = btns.length;
+        for(var i=0;i<length;i++){
+          modal_footer.appendChild(btns[0]);
         }
       }
     }
