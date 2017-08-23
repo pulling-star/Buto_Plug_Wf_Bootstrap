@@ -11,6 +11,9 @@ function plugin_wf_bootstrapjs(){
     }else{
       modal_size = '';
     }
+    if(data.footer_btn_close){
+      data.footer += "<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">"+data.footer_btn_close_text+"</button>";
+    }
     var bootstrap_modal = [
       {
         type: 'div', 
@@ -36,7 +39,7 @@ function plugin_wf_bootstrapjs(){
                   {
                     type: 'div', 
                     attribute: {class: 'modal-footer', id: data.id+'_footer'}, 
-                    innerHTML: ''
+                    innerHTML: data.footer
                   }
                 ]
               }
@@ -55,7 +58,7 @@ function plugin_wf_bootstrapjs(){
     PluginWfDom.render(bootstrap_modal, document.body);
   }
   this.modal = function(data){
-    var default_data = {id: 'modal_001', lable: 'Bootstrap modal', content: 'This is some content to show Bootstrap Modal.', size: null, url: null, icon: null, backdrop: false, resizable: false};
+    var default_data = {id: 'modal_001', lable: 'Bootstrap modal', content: 'This is some content to show Bootstrap Modal.', size: null, url: null, icon: null, backdrop: false, resizable: false, footer: '', footer_btn_close: false, footer_btn_close_text: 'Close'};
     for (var key in data) {
       default_data[key] = data[key];
     }      

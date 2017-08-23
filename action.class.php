@@ -12,6 +12,9 @@ PluginWfBootstrapjs.modal({id: 'modal_002', url: '/editor/plugin', lable: 'Plugi
 //Panel example:
 PluginWfBootstrapjs.panel({lable: 'Headline', content: 'Some content', parent: document.body});
 #code#
+#code-javascript#
+#load:[app_dir]/plugin/[plugin]/public/include.js:load#
+#code#
  */
 class PluginWfBootstrapjs{
   /**
