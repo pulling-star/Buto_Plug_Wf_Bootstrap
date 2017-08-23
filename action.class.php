@@ -16,6 +16,9 @@ $('#element_id').modal('hide');
 //Panel example:
 PluginWfBootstrapjs.panel({lable: 'Headline', content: 'Some content', parent: document.body});
 #code#
+#code-javascript#
+#load:[app_dir]/plugin/[plugin]/public/include.js:load#
+#code#
  */
 class PluginWfBootstrapjs{
   /**
