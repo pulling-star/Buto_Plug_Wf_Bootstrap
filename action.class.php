@@ -7,6 +7,10 @@ Javascript to extend Bootstrap.
 //Modal example:
 PluginWfBootstrapjs.modal({id: 'modal_001', size: 'sm'});
 PluginWfBootstrapjs.modal({id: 'modal_002', url: '/editor/plugin', lable: 'Plugin'});
+//Hide all modals.
+$('.modal').modal('hide');
+//Hide modal by id.
+$('#element_id').modal('hide');
 #code#
 #code-javascript#
 //Panel example:

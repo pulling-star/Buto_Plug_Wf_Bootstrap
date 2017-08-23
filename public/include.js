@@ -4,6 +4,10 @@ function plugin_wf_bootstrapjs(){
       document.getElementById(data.id).parentNode.removeChild(document.getElementById(data.id));
     }
     var modal_size = null;
+    var modal_class = 'modal';
+    if(data.fade){
+      modal_class += ' fade';
+    }
     if(data.size){
       if(data.size=='sm'){modal_size = ' modal-sm';}
       else if(data.size=='lg'){modal_size = ' modal-lg';}
@@ -14,7 +18,7 @@ function plugin_wf_bootstrapjs(){
     var bootstrap_modal = [
       {
         type: 'div', 
-        attribute: {id: data.id, role: 'dialog', class: 'modal fade'}, 
+        attribute: {id: data.id, role: 'dialog', class: modal_class}, 
         innerHTML: [
           {
             type: 'div', 
@@ -55,7 +59,16 @@ function plugin_wf_bootstrapjs(){
     PluginWfDom.render(bootstrap_modal, document.body);
   }
   this.modal = function(data){
-    var default_data = {id: 'modal_001', lable: 'Bootstrap modal', content: 'This is some content to show Bootstrap Modal.', size: null, url: null, icon: null, backdrop: false, resizable: false};
+    /**
+     * PluginBootstrapAlertwait
+     */
+    if(typeof PluginBootstrapAlertwait == 'object'){
+      PluginBootstrapAlertwait.close();
+    }
+    /**
+     * 
+     */
+    var default_data = {id: 'modal_001', lable: 'Bootstrap modal', content: 'This is some content to show Bootstrap Modal.', size: null, url: null, icon: null, backdrop: false, resizable: false, fade: true};
     for (var key in data) {
       default_data[key] = data[key];
     }      
