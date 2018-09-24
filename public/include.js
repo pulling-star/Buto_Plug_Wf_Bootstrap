@@ -1,5 +1,9 @@
 function plugin_wf_bootstrapjs(){
+  this.bootstrap_version = '3';
   this.createModal = function(data){
+    if(document.getElementById('PluginTwitterBootstrap413v')){
+      this.bootstrap_version = '4';
+    }
     if(document.getElementById(data.id)){
       document.getElementById(data.id).parentNode.removeChild(document.getElementById(data.id));
     }
@@ -18,39 +22,76 @@ function plugin_wf_bootstrapjs(){
     if(data.footer_btn_close){
       data.footer += "<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">"+data.footer_btn_close_text+"</button>";
     }
-    var bootstrap_modal = [
-      {
-        type: 'div', 
-        attribute: {id: data.id, role: 'dialog', class: modal_class}, 
-        innerHTML: [
-          {
-            type: 'div', 
-            attribute: {class: 'modal-dialog'+modal_size, id: data.id+'_dialog'},
-            innerHTML: [
-              {
-                type: 'div',
-                attribute: {class: 'modal-content', id: data.id+'_content'},
-                innerHTML: [
-                  {
-                    type: 'div', 
-                    attribute: {class: 'modal-header'},
-                    innerHTML: [
-                      {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal'}, innerHTML: 'x', idzzz: data.id+'_btn_close'}, 
-                      {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: data.lable}
-                    ]
-                  },
-                  {type: 'div', attribute: {class: 'modal-body', id: data.id+'_body'}, innerHTML: data.content},
-                  {
-                    type: 'div', 
-                    attribute: {class: 'modal-footer', id: data.id+'_footer'}, 
-                    innerHTML: data.footer
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }];
+    var bootstrap_modal = null;
+    if(this.bootstrap_version=='3'){
+      bootstrap_modal = [
+        {
+          type: 'div', 
+          attribute: {id: data.id, role: 'dialog', class: modal_class}, 
+          innerHTML: [
+            {
+              type: 'div', 
+              attribute: {class: 'modal-dialog'+modal_size, id: data.id+'_dialog'},
+              innerHTML: [
+                {
+                  type: 'div',
+                  attribute: {class: 'modal-content', id: data.id+'_content'},
+                  innerHTML: [
+                    {
+                      type: 'div', 
+                      attribute: {class: 'modal-header'},
+                      innerHTML: [
+                        {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal'}, innerHTML: 'x', idzzz: data.id+'_btn_close'}, 
+                        {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: data.lable}
+                      ]
+                    },
+                    {type: 'div', attribute: {class: 'modal-body', id: data.id+'_body'}, innerHTML: data.content},
+                    {
+                      type: 'div', 
+                      attribute: {class: 'modal-footer', id: data.id+'_footer'}, 
+                      innerHTML: data.footer
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }];
+    }else if(this.bootstrap_version=='4'){
+      bootstrap_modal = [
+        {
+          type: 'div', 
+          attribute: {id: data.id, role: 'dialog', class: modal_class}, 
+          innerHTML: [
+            {
+              type: 'div', 
+              attribute: {class: 'modal-dialog'+modal_size, id: data.id+'_dialog'},
+              innerHTML: [
+                {
+                  type: 'div',
+                  attribute: {class: 'modal-content', id: data.id+'_content'},
+                  innerHTML: [
+                    {
+                      type: 'div', 
+                      attribute: {class: 'modal-header'},
+                      innerHTML: [
+                        {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: data.lable},
+                        {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal'}, innerHTML: 'x', idzzz: data.id+'_btn_close'} 
+                      ]
+                    },
+                    {type: 'div', attribute: {class: 'modal-body', id: data.id+'_body'}, innerHTML: data.content},
+                    {
+                      type: 'div', 
+                      attribute: {class: 'modal-footer', id: data.id+'_footer'}, 
+                      innerHTML: data.footer
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }];
+    }
     //Replace x with Fontawesome symbol if PluginDavegandyFontawesome450 is included.
     if(document.getElementById('PluginDavegandyFontawesome450')){
       bootstrap_modal[0].innerHTML[0].innerHTML[0].innerHTML[0].innerHTML[0].innerHTML = '<i class="fa fa-close"></i>';
