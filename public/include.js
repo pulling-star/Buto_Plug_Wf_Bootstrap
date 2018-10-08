@@ -42,7 +42,7 @@ function plugin_wf_bootstrapjs(){
                       attribute: {class: 'modal-header'},
                       innerHTML: [
                         {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal'}, innerHTML: 'x', idzzz: data.id+'_btn_close'}, 
-                        {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: data.lable}
+                        {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: data.label}
                       ]
                     },
                     {type: 'div', attribute: {class: 'modal-body', id: data.id+'_body'}, innerHTML: data.content},
@@ -75,7 +75,7 @@ function plugin_wf_bootstrapjs(){
                       type: 'div', 
                       attribute: {class: 'modal-header'},
                       innerHTML: [
-                        {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: data.lable},
+                        {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: data.label},
                         {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal'}, innerHTML: 'x', idzzz: data.id+'_btn_close'} 
                       ]
                     },
@@ -98,7 +98,6 @@ function plugin_wf_bootstrapjs(){
       if(data.icon){
         bootstrap_modal[0].innerHTML[0].innerHTML[0].innerHTML[0].innerHTML[1].innerHTML = '<i class="fa fa-'+data.icon+'"></i> '+bootstrap_modal[0].innerHTML[0].innerHTML[0].innerHTML[0].innerHTML[1].innerHTML;
       }
-      //<i class="fa fa-book"></i>
     }
     PluginWfDom.render(bootstrap_modal, document.body);
   }
@@ -110,9 +109,15 @@ function plugin_wf_bootstrapjs(){
       PluginBootstrapAlertwait.close();
     }
     /**
+     * Typo fix.
+     */
+    if(data.lable){
+      data.label = data.lable;
+    }
+    /**
      * 
      */
-    var default_data = {id: 'modal_001', lable: 'Bootstrap modal', content: 'This is some content to show Bootstrap Modal.', size: null, url: null, icon: null, backdrop: false, resizable: false, fade: true, footer: '', footer_btn_close: false, footer_btn_close_text: 'Close'};
+    var default_data = {id: 'modal_001', label: 'Bootstrap modal', content: 'This is some content to show Bootstrap Modal.', size: null, url: null, icon: null, backdrop: false, resizable: false, fade: true, footer: '', footer_btn_close: false, footer_btn_close_text: 'Close'};
     for (var key in data) {
       default_data[key] = data[key];
     }      
@@ -155,7 +160,7 @@ function plugin_wf_bootstrapjs(){
     }
   }
   this.panel = function(data){
-    var default_data = {id: 'panel_001', lable: 'Bootstrap panel', content: 'Panel content.', url: null, icon: null, parent: null};
+    var default_data = {id: 'panel_001', label: 'Bootstrap panel', content: 'Panel content.', url: null, icon: null, parent: null};
     for (var key in data) {
       default_data[key] = data[key];
     }      
@@ -171,7 +176,7 @@ function plugin_wf_bootstrapjs(){
       var  panel = [{type: 'div', attribute: {class: 'panel panel-default', id: data.id}, innerHTML: [
             {type: 'div', attribute: {class: 'panel-heading', id: data.id+'_heading'}, innerHTML: [
                         {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal', onclick: "PluginWfDom.remove('"+data.id+"');"}, innerHTML: 'x'}, 
-                        {type: 'span', attribute: {class: 'modal-titlezzz'}, innerHTML: data.lable}
+                        {type: 'span', attribute: {class: 'modal-titlezzz'}, innerHTML: data.label}
             ]},
             {type: 'div', attribute: {class: 'panel-body', id: data.id+'_body'}, innerHTML: data.content}
           ]}]
