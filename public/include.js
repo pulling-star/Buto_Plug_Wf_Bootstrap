@@ -101,6 +101,12 @@ function plugin_wf_bootstrapjs(){
     }
     PluginWfDom.render(bootstrap_modal, document.body);
   }
+  /**
+   * Creates an bootstrap modal in dom.
+   * Default: {id: 'modal_001', label: 'Bootstrap modal', content: 'This is some content to show Bootstrap Modal.', size: null, url: null, icon: null, backdrop: false, resizable: false, fade: true, footer: '', footer_btn_close: false, footer_btn_close_text: 'Close'}
+   * @param object data
+   * @returns null
+   */
   this.modal = function(data){
     /**
      * PluginBootstrapAlertwait
