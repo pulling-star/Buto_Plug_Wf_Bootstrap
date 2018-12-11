@@ -82,7 +82,7 @@ function plugin_wf_bootstrapjs(){
                     {type: 'div', attribute: {class: 'modal-body', id: data.id+'_body'}, innerHTML: data.content},
                     {
                       type: 'div', 
-                      attribute: {class: 'modal-footer', id: data.id+'_footer'}, 
+                      attribute: {class: 'modal-footer', id: data.id+'_footer', style: 'display:block'}, 
                       innerHTML: data.footer
                     }
                   ]
