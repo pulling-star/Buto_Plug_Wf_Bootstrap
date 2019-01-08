@@ -1,5 +1,8 @@
-version: '1.1'
+version: '1.2'
 history:
+  '1.2':
+    date: '2018-01-08'
+    description: 'Set focus on close button.'
   '1.1':
     date: '2018-01-01'
     description: 'Add modal footer style display block for Bootstrap 4.'

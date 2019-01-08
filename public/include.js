@@ -20,7 +20,7 @@ function plugin_wf_bootstrapjs(){
       modal_size = '';
     }
     if(data.footer_btn_close){
-      data.footer += "<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">"+data.footer_btn_close_text+"</button>";
+      data.footer += "<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\" id=\""+data.id+"_btn_close\">"+data.footer_btn_close_text+"</button>";
     }
     var bootstrap_modal = null;
     if(this.bootstrap_version=='3'){
@@ -41,7 +41,7 @@ function plugin_wf_bootstrapjs(){
                       type: 'div', 
                       attribute: {class: 'modal-header'},
                       innerHTML: [
-                        {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal'}, innerHTML: 'x', idzzz: data.id+'_btn_close'}, 
+                        {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal'}, innerHTML: 'x'}, 
                         {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: data.label}
                       ]
                     },
@@ -76,7 +76,7 @@ function plugin_wf_bootstrapjs(){
                       attribute: {class: 'modal-header'},
                       innerHTML: [
                         {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: data.label},
-                        {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal'}, innerHTML: 'x', idzzz: data.id+'_btn_close'} 
+                        {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal'}, innerHTML: 'x'} 
                       ]
                     },
                     {type: 'div', attribute: {class: 'modal-body', id: data.id+'_body'}, innerHTML: data.content},
@@ -100,6 +100,12 @@ function plugin_wf_bootstrapjs(){
       }
     }
     PluginWfDom.render(bootstrap_modal, document.body);
+    /**
+     * Set focus on close button if exist.
+     */
+    if(document.getElementById(data.id+'_btn_close')){
+      setTimeout(function(){ document.getElementById(data.id+'_btn_close').focus(); }, 500);
+    }
   }
   /**
    * Creates an bootstrap modal in dom.
