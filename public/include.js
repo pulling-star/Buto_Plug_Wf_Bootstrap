@@ -41,7 +41,7 @@ function plugin_wf_bootstrapjs(){
                       type: 'div', 
                       attribute: {class: 'modal-header'},
                       innerHTML: [
-                        {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal'}, innerHTML: 'x'}, 
+                        {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal', id: data.id+'_modal_dismiss'}, innerHTML: 'x'}, 
                         {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: data.label}
                       ]
                     },
@@ -76,7 +76,7 @@ function plugin_wf_bootstrapjs(){
                       attribute: {class: 'modal-header'},
                       innerHTML: [
                         {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: data.label},
-                        {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal'}, innerHTML: 'x'} 
+                        {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal', id: data.id+'_modal_dismiss'}, innerHTML: 'x'} 
                       ]
                     },
                     {type: 'div', attribute: {class: 'modal-body', id: data.id+'_body'}, innerHTML: data.content},
@@ -101,10 +101,10 @@ function plugin_wf_bootstrapjs(){
     }
     PluginWfDom.render(bootstrap_modal, document.body);
     /**
-     * Set focus on close button if exist.
+     * Set focus on modal dismiss button if exist.
      */
-    if(document.getElementById(data.id+'_btn_close')){
-      setTimeout(function(){ document.getElementById(data.id+'_btn_close').focus(); }, 500);
+    if(document.getElementById(data.id+'_modal_dismiss')){
+      setTimeout(function(){ document.getElementById(data.id+'_modal_dismiss').focus(); }, 500);
     }
   }
   /**

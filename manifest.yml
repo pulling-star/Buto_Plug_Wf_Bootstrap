@@ -1,5 +1,8 @@
-version: '1.2'
+version: '1.2.1'
 history:
+  '1.2.1':
+    date: '2019-01-22'
+    description: 'Set focus on X button on upper right corner because of modal was scrolling down when focus on button at the bottom.'
   '1.2':
     date: '2018-01-08'
     description: 'Set focus on close button.'
