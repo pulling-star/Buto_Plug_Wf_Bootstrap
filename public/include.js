@@ -12,6 +12,7 @@ function plugin_wf_bootstrapjs(){
     if(data.fade){
       modal_class += ' fade';
     }
+    modal_class += ' modal-fullscreen';
     if(data.size){
       if(data.size=='sm'){modal_size = ' modal-sm';}
       else if(data.size=='lg'){modal_size = ' modal-lg';}
