@@ -16,6 +16,7 @@ function plugin_wf_bootstrapjs(){
     if(data.size){
       if(data.size=='sm'){modal_size = ' modal-sm';}
       else if(data.size=='lg'){modal_size = ' modal-lg';}
+      else if(data.size=='xl'){modal_size = ' modal-xl';}
       else{modal_size = '';}
     }else{
       modal_size = '';
