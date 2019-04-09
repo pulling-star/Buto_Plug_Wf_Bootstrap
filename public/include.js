@@ -21,7 +21,7 @@ function plugin_wf_bootstrapjs(){
       modal_size = '';
     }
     if(data.footer_btn_close){
-      data.footer += "<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\" id=\""+data.id+"_btn_close\">"+data.footer_btn_close_text+"</button>";
+      data.footer += "<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\" id=\""+data.id+"_btn_close\">"+data.footer_btn_close_text+"</button>";
     }
     var bootstrap_modal = null;
     if(this.bootstrap_version=='3'){
