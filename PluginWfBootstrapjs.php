@@ -9,7 +9,7 @@ class PluginWfBootstrapjs{
     /**
      * IE fix.
      */
-    $element[] = wfDocument::createHtmlElement('style', ".modal-content{overflow:auto}");
+    $element[] = wfDocument::createHtmlElement('style', "@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none){ .modal-content{overflow:auto} }");
     /**
      * 
      */
