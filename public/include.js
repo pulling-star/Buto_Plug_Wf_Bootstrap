@@ -102,12 +102,6 @@ function plugin_wf_bootstrapjs(){
       }
     }
     PluginWfDom.render(bootstrap_modal, document.body);
-    /**
-     * Set focus on modal dismiss button if exist.
-     */
-    if(document.getElementById(data.id+'_modal_dismiss')){
-      setTimeout(function(){ document.getElementById(data.id+'_modal_dismiss').focus(); }, 500);
-    }
   }
   /**
    * Creates an bootstrap modal in dom.
