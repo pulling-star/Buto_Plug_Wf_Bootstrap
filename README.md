@@ -15,10 +15,38 @@ data:
 ```
 
 
-## Javascript
+## Usage
+### Create one
 ```
-PluginWfBootstrapjs.modal({id: 'modal_001', size: 'sm'});
-PluginWfBootstrapjs.modal({id: 'modal_002', url: '/editor/plugin', label: 'Plugin'});
+PluginWfBootstrapjs.modal({id: 'my_modal'});
+```
+### Label
+```
+PluginWfBootstrapjs.modal({id: 'my_modal', label: 'My modal'});
+```
+### Size
+```
+PluginWfBootstrapjs.modal({id: 'my_modal', size: 'sm'});
+```
+### Url
+```
+PluginWfBootstrapjs.modal({id: 'my_modal', url: '/_some_/_url_'});
+```
+Reload button.
+```
+PluginWfBootstrapjs.modal({id: 'my_modal', url: '/_some_/_url_', btn_reload: true});
+```
+### Content
+```
+PluginWfBootstrapjs.modal({id: 'my_modal', content: 'Some content...'});
+```
+Add content.
+```
+document.getElementById('my_modal_body').innerHTML='Add some content!';
+```
+Add content with PluginWfDom.
+```
+PluginWfDom.render([{type: 'div', innerHTML: [{type: 'strong', innerHTML: 'Date'}, {type: 'div', innerHTML: '2001-01-01'}]}], 'my_modal_body');
 ```
 
 

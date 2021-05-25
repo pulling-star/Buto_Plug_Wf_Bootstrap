@@ -21,6 +21,10 @@ function plugin_wf_bootstrapjs(){
     }else{
       modal_size = '';
     }
+    var btn_reload_style = 'display:none';
+    if(data.btn_reload){
+      btn_reload_style = '';
+    }
     if(data.footer_btn_close){
       data.footer += "<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\" id=\""+data.id+"_btn_close\">"+data.footer_btn_close_text+"</button>";
     }
@@ -78,7 +82,8 @@ function plugin_wf_bootstrapjs(){
                       attribute: {class: 'modal-header'},
                       innerHTML: [
                         {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: data.label},
-                        {type: 'button', attribute: {type: 'button', class: 'close', 'data-dismiss': 'modal', id: data.id+'_modal_dismiss'}, innerHTML: 'x'} 
+                        {type: 'button', attribute: {type: 'button', class: 'close', style: btn_reload_style, onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: [{type: 'img', innerHTML: null, attribute: {src: 'http://localhost/plugin/icons/octicons/build/svg/sync.svg'}}] },
+                        {type: 'button', attribute: {type: 'button', class: 'close', style: 'margin-left:0px', 'data-dismiss': 'modal', id: data.id+'_modal_dismiss'}, innerHTML: [{type: 'img', innerHTML: null, attribute: {src: 'http://localhost/plugin/icons/octicons/build/svg/x.svg'}}]} 
                       ]
                     },
                     {type: 'div', attribute: {class: 'modal-body', id: data.id+'_body'}, innerHTML: data.content},
@@ -125,7 +130,21 @@ function plugin_wf_bootstrapjs(){
     /**
      * 
      */
-    var default_data = {id: 'modal_001', label: 'Bootstrap modal', content: 'This is some content to show Bootstrap Modal.', size: null, url: null, icon: null, backdrop: false, resizable: false, fade: true, footer: '', footer_btn_close: false, footer_btn_close_text: 'Close'};
+    var default_data = {
+      id: 'modal_001', 
+      label: 'Bootstrap modal', 
+      content: 'This is some content to show Bootstrap Modal.', 
+      size: null, 
+      url: null, 
+      icon: null, 
+      backdrop: false, 
+      resizable: false, 
+      fade: true, 
+      footer: '', 
+      footer_btn_close: false, 
+      footer_btn_close_text: 'Close',
+      btn_reload: false
+    };
     for (var key in data) {
       default_data[key] = data[key];
     }      
