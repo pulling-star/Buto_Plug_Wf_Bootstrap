@@ -1,5 +1,9 @@
-version: 1.7.0
+version: 1.7.1
 history:
+  1.7.1:
+    date: '2021-05-31'
+    title: 'Buttons'
+    description: 'Buttons close and reload was hidden due to wrong url.'
   1.7.0:
     date: '2021-05-25'
     title: 'Reload button'
