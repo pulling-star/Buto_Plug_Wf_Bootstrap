@@ -1,5 +1,9 @@
-version: 1.7.1
+version: 1.7.2
 history:
+  1.7.2:
+    date: '2022-07-21'
+    title: 'Close button'
+    description: 'Set close button to 20px width.'
   1.7.1:
     date: '2021-05-31'
     title: 'Buttons'
