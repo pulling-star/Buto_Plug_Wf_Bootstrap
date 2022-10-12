@@ -152,6 +152,10 @@ function plugin_wf_bootstrapjs(){
     if(!data.backdrop){
       data.backdrop = 'static'; // or true or false
     }
+    /**
+     * Close modal if exist.
+     */
+    $('#'+data.id).modal('hide');
     //Create modal.
     this.createModal(data);
     //Run modal.
