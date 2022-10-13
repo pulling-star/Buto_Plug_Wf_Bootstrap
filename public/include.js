@@ -98,6 +98,12 @@ function plugin_wf_bootstrapjs(){
             }
           ]
         }];
+        /**
+         * Handle footer
+         */
+        if(!data.footer.length){
+          bootstrap_modal[0].innerHTML[0].innerHTML[0].innerHTML[2].attribute.style='display:none';
+        }
     }
     //Replace x with Fontawesome symbol if PluginDavegandyFontawesome450 is included.
     if(document.getElementById('PluginDavegandyFontawesome450')){

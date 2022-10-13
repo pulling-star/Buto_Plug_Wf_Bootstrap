@@ -1,5 +1,9 @@
-version: 1.8.0
+version: 1.9.0
 history:
+  1.9.0:
+    date: '2022-10-13'
+    title: 'Footer'
+    description: 'Hide footer if no content provided.'
   1.8.0:
     date: '2022-10-12'
     title: 'Hide modal'
