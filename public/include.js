@@ -81,7 +81,10 @@ function plugin_wf_bootstrapjs(){
                       type: 'div', 
                       attribute: {class: 'modal-header'},
                       innerHTML: [
-                        {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: data.label},
+                        {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: [
+                          {type: 'img', innerHTML: null, attribute: {src: '/plugin/icons/octicons/build/svg/'+data.icon+'.svg', style: 'width:20px;margin-top:-4px;margin-right:4px'}},
+                          {type: 'span', innerHTML: data.label}
+                        ]},
                         {type: 'button', attribute: {type: 'button', class: 'close', style: btn_reload_style, onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: [{type: 'img', innerHTML: null, attribute: {src: '/plugin/icons/octicons/build/svg/sync.svg'}}] },
                         {type: 'button', attribute: {type: 'button', class: 'close', style: 'margin-left:0px', 'data-dismiss': 'modal', id: data.id+'_modal_dismiss'}, innerHTML: [{type: 'img', innerHTML: null, attribute: {src: '/plugin/icons/octicons/build/svg/x.svg', style: 'width:20px'}}]} 
                       ]
@@ -99,19 +102,22 @@ function plugin_wf_bootstrapjs(){
           ]
         }];
         /**
+         * Handle icon
+         */
+        if(!data.icon.length){
+          bootstrap_modal[0].innerHTML[0].innerHTML[0].innerHTML[0].innerHTML[0].innerHTML[0].attribute.style='display:none';
+          bootstrap_modal[0].innerHTML[0].innerHTML[0].innerHTML[0].innerHTML[0].innerHTML[0].attribute.src='';
+        }
+        /**
          * Handle footer
          */
         if(!data.footer.length){
           bootstrap_modal[0].innerHTML[0].innerHTML[0].innerHTML[2].attribute.style='display:none';
         }
     }
-    //Replace x with Fontawesome symbol if PluginDavegandyFontawesome450 is included.
-    if(document.getElementById('PluginDavegandyFontawesome450')){
-      bootstrap_modal[0].innerHTML[0].innerHTML[0].innerHTML[0].innerHTML[0].innerHTML = '<i class="fa fa-close"></i>';
-      if(data.icon){
-        bootstrap_modal[0].innerHTML[0].innerHTML[0].innerHTML[0].innerHTML[1].innerHTML = '<i class="fa fa-'+data.icon+'"></i> '+bootstrap_modal[0].innerHTML[0].innerHTML[0].innerHTML[0].innerHTML[1].innerHTML;
-      }
-    }
+    /**
+     * 
+     */
     PluginWfDom.render(bootstrap_modal, document.body);
   }
   /**
@@ -142,7 +148,7 @@ function plugin_wf_bootstrapjs(){
       content: 'This is some content to show Bootstrap Modal.', 
       size: null, 
       url: null, 
-      icon: null, 
+      icon: '', 
       backdrop: false, 
       resizable: false, 
       fade: true, 

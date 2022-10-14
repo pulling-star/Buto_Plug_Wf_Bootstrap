@@ -1,5 +1,9 @@
-version: 1.9.0
+version: 1.10.0
 history:
+  1.10.0:
+    date: '2022-10-14'
+    title: 'Icon'
+    description: 'Remove Fontawesome support. If param icon is set it will be for plugin icons/octicons.'
   1.9.0:
     date: '2022-10-13'
     title: 'Footer'
