@@ -1,5 +1,9 @@
-version: 1.10.0
+version: 1.10.1
 history:
+  1.10.1:
+    date: '2022-10-18'
+    title: 'Readme'
+    description: Improvements.
   1.10.0:
     date: '2022-10-14'
     title: 'Icon'

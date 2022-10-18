@@ -1,7 +1,5 @@
 # Buto-Plugin-WfBootstrapjs
-
 Create modals with Javascript. Works for Bootstrap 3 and 4.
-
 - Modals has to be closed with a button click.
 - Multiple modals are supported.
 
@@ -13,44 +11,44 @@ data:
   plugin: wf/bootstrapjs
   method: include
 ```
-
-
-## Usage
-### Create one
+## Open modal
 ```
-PluginWfBootstrapjs.modal({id: 'my_modal'});
+PluginWfBootstrapjs.modal({});
 ```
-### Label
+id.
 ```
-PluginWfBootstrapjs.modal({id: 'my_modal', label: 'My modal'});
+{id: 'my_modal'}
 ```
-### Size
+Label.
 ```
-PluginWfBootstrapjs.modal({id: 'my_modal', size: 'sm'});
+{label: 'My modal'}
 ```
-### Url
+Size (sm, lg, xl).
 ```
-PluginWfBootstrapjs.modal({id: 'my_modal', url: '/_some_/_url_'});
+{size: 'sm'}
+```
+Url (add content to body).
+```
+{url: '/_some_/_url_'}
 ```
 Reload button.
 ```
-PluginWfBootstrapjs.modal({id: 'my_modal', url: '/_some_/_url_', btn_reload: true});
+{btn_reload: true}
 ```
-### Content
+Content.
 ```
-PluginWfBootstrapjs.modal({id: 'my_modal', content: 'Some content...'});
+{content: 'Some content...'}
 ```
-Add content.
+Body.
+Add content to body.
 ```
 document.getElementById('my_modal_body').innerHTML='Add some content!';
 ```
-Add content with PluginWfDom.
+Add content to body using PluginWfDom.
 ```
 PluginWfDom.render([{type: 'div', innerHTML: [{type: 'strong', innerHTML: 'Date'}, {type: 'div', innerHTML: '2001-01-01'}]}], 'my_modal_body');
 ```
-
-
-### Jquery
+## Jquery
 Hide all modals.
 ```
 $('.modal').modal('hide');
