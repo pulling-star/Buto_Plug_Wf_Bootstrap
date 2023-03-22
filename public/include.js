@@ -4,6 +4,9 @@ function plugin_wf_bootstrapjs(){
     if(document.getElementById('PluginTwitterBootstrap413v')){
       this.bootstrap_version = '4';
     }
+    if(document.getElementById('PluginTwitterBootstrap530v')){
+      this.bootstrap_version = '5';
+    }
     if(document.getElementById(data.id)){
       document.getElementById(data.id).parentNode.removeChild(document.getElementById(data.id));
     }
@@ -23,10 +26,18 @@ function plugin_wf_bootstrapjs(){
     }
     var btn_reload_style = 'display:none';
     if(data.btn_reload){
-      btn_reload_style = '';
+      if(this.bootstrap_version != '5'){
+        btn_reload_style = '';
+      }else{
+        btn_reload_style = '--bs-btn-close-bg:none;margin-top:-20px;';
+      }
     }
     if(data.footer_btn_close){
-      data.footer += "<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\" id=\""+data.id+"_btn_close\">"+data.footer_btn_close_text+"</button>";
+      if(this.bootstrap_version != 5){
+        data.footer += "<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\" id=\""+data.id+"_btn_close\">"+data.footer_btn_close_text+"</button>";
+      }else{
+        data.footer += "<button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\" id=\""+data.id+"_btn_close\">"+data.footer_btn_close_text+"</button>";
+      }
     }
     var bootstrap_modal = null;
     if(this.bootstrap_version=='3'){
@@ -114,6 +125,57 @@ function plugin_wf_bootstrapjs(){
         if(!data.footer.length){
           bootstrap_modal[0].innerHTML[0].innerHTML[0].innerHTML[2].attribute.style='display:none';
         }
+    }else if(this.bootstrap_version=='5'){
+      bootstrap_modal = [
+        {
+          type: 'div', 
+          attribute: {id: data.id, role: 'dialog', class: modal_class, "data-bs-backdrop": data.backdrop}, 
+          innerHTML: [
+            {
+              type: 'div', 
+              attribute: {class: 'modal-dialog'+modal_size, id: data.id+'_dialog'},
+              innerHTML: [
+                {
+                  type: 'div',
+                  attribute: {class: 'modal-content', id: data.id+'_content'},
+                  innerHTML: [
+                    {
+                      type: 'div', 
+                      attribute: {class: 'modal-header'},
+                      innerHTML: [
+                        {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: [
+                          {type: 'img', innerHTML: null, attribute: {src: '/plugin/icons/octicons/build/svg/'+data.icon+'.svg', style: 'width:20px;margin-top:-4px;margin-right:4px'}},
+                          {type: 'span', innerHTML: data.label, attribute: {id: data.id+'_label'}}
+                        ]},
+                        {type: 'button', attribute: {type: 'button', class: 'btn-close close', style: btn_reload_style, onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: [{type: 'img', innerHTML: null, attribute: {src: '/plugin/icons/octicons/build/svg/sync.svg'}}] },
+                        {type: 'button', attribute: {type: 'button', class: 'btn-close close', style: 'margin-left:0px', 'data-bs-dismiss': 'modal', id: data.id+'_modal_dismiss'}, innerHTML: null} 
+                      ]
+                    },
+                    {type: 'div', attribute: {class: 'modal-body', id: data.id+'_body'}, innerHTML: data.content},
+                    {
+                      type: 'div', 
+                      attribute: {class: 'modal-footer', id: data.id+'_footer', style: 'display:block'}, 
+                      innerHTML: data.footer
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }];
+        /**
+         * Handle icon
+         */
+        if(!data.icon.length){
+          bootstrap_modal[0].innerHTML[0].innerHTML[0].innerHTML[0].innerHTML[0].innerHTML[0].attribute.style='display:none';
+          bootstrap_modal[0].innerHTML[0].innerHTML[0].innerHTML[0].innerHTML[0].innerHTML[0].attribute.src='';
+        }
+        /**
+         * Handle footer
+         */
+        if(!data.footer.length){
+          bootstrap_modal[0].innerHTML[0].innerHTML[0].innerHTML[2].attribute.style='display:none';
+        }
     }
     /**
      * 
@@ -149,7 +211,7 @@ function plugin_wf_bootstrapjs(){
       size: null, 
       url: null, 
       icon: '', 
-      backdrop: false, 
+      backdrop: true, 
       resizable: false, 
       fade: true, 
       footer: '', 
@@ -162,7 +224,9 @@ function plugin_wf_bootstrapjs(){
     }      
     data = default_data;
     if(!data.backdrop){
-      data.backdrop = 'static'; // or true or false
+      data.backdrop = '_none_'; // or true or false
+    }else{
+      data.backdrop = 'static';
     }
     /**
      * Close modal if exist.
@@ -171,7 +235,11 @@ function plugin_wf_bootstrapjs(){
     //Create modal.
     this.createModal(data);
     //Run modal.
-    $("#"+data.id).modal({backdrop: data.backdrop});
+    if(this.bootstrap_version != 5){
+      $("#"+data.id).modal({backdrop: data.backdrop});
+    }else{
+      $("#"+data.id).modal('show');
+    }
     //Handle scroll problem when open multiple modals.
     $('#'+data.id).on('hidden.bs.modal', function(){
       // Removing from dom.
@@ -239,7 +307,6 @@ function plugin_wf_bootstrapjs(){
    */
   this.moveModalButtons = function(from_id){
     var from = document.getElementById(from_id);
-    
     var modal_content = this.getParentNodeByClassname(from_id, 'modal-content');
     if(modal_content){
       var elements = modal_content.getElementsByClassName('modal-footer');
@@ -266,6 +333,5 @@ function plugin_wf_bootstrapjs(){
     }
     return null;
   }
-  
 }
 var PluginWfBootstrapjs = new plugin_wf_bootstrapjs();
