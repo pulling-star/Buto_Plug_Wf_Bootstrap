@@ -15,38 +15,54 @@ data:
 ```
 PluginWfBootstrapjs.modal({});
 ```
-id.
+### id
 ```
-{id: 'my_modal'}
+id: 'my_modal'
 ```
-Label.
+### Label
 ```
-{label: 'My modal'}
+label: 'My modal'
 ```
+### Size
 Size (sm, lg, xl).
 ```
-{size: 'sm'}
+size: 'sm'
 ```
+### Url
 Url (add content to body).
 ```
-{url: '/_some_/_url_'}
+url: '/_some_/_url_'
 ```
+### Reload
 Reload button.
 ```
-{btn_reload: true}
+btn_reload: true
 ```
-Content.
+### Content
+#### Text
+Content form text.
 ```
-{content: 'Some content...'}
+content: 'Some content...'
 ```
-Body.
-Add content to body.
+#### Body
+Add content to body element.
 ```
 document.getElementById('my_modal_body').innerHTML='Add some content!';
 ```
+#### Dom
 Add content to body using PluginWfDom.
 ```
 PluginWfDom.render([{type: 'div', innerHTML: [{type: 'strong', innerHTML: 'Date'}, {type: 'div', innerHTML: '2001-01-01'}]}], 'my_modal_body');
+```
+### Backdrop
+Set backdrop to false (default true) to be able to close modal when click besides.
+```
+backdrop: true
+```
+### Body background
+Set body background using Bootstrap bg-(name) (optional).
+```
+body_bg: 'light'
 ```
 ## Jquery
 Hide all modals.

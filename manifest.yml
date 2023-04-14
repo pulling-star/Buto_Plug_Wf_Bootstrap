@@ -1,5 +1,9 @@
-version: 1.12.0
+version: 1.13.0
 history:
+  1.13.0:
+    date: '2023-04-14'
+    title: 'Body background'
+    description: Set body background using Bootstrap bg-(name) (optional).
   1.12.0:
     date: '2023-03-22'
     title: 'Bootstrap'
