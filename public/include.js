@@ -173,7 +173,7 @@ function plugin_wf_bootstrapjs(){
       /**
        * Handle footer
        */
-      if(!data.footer.length){
+      if(!data.footer.length && data.footer != true){
         bootstrap_modal[0].innerHTML[0].innerHTML[0].innerHTML[2].attribute.style='display:none';
       }
       /**
