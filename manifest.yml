@@ -1,5 +1,9 @@
-version: 1.14.0
+version: 1.15.0
 history:
+  1.15.0:
+    date: '2023-09-06'
+    title: 'Method'
+    description: Add method modalReload.
   1.14.0:
     date: '2023-05-23'
     title: 'Footer'

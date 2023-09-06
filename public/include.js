@@ -340,5 +340,9 @@ function plugin_wf_bootstrapjs(){
     }
     return null;
   }
+  this.modalReload = function(id){
+    PluginWfAjax.update(id+'_body');
+    return null;
+  }
 }
 var PluginWfBootstrapjs = new plugin_wf_bootstrapjs();
