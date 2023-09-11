@@ -1,36 +1,40 @@
-version: 1.15.0
+version: 1.15.1
 history:
+  1.15.1:
+    date: '2023-09-11'
+    title: Versions
+    description: 'Versions update.'
   1.15.0:
     date: '2023-09-06'
-    title: 'Method'
-    description: Add method modalReload.
+    title: Method
+    description: 'Add method modalReload.'
   1.14.0:
     date: '2023-05-23'
-    title: 'Footer'
-    description: Handle display footer using Bootstrap version 5.
+    title: Footer
+    description: 'Handle display footer using Bootstrap version 5.'
   1.13.0:
     date: '2023-04-14'
     title: 'Body background'
-    description: Set body background using Bootstrap bg-(name) (optional).
+    description: 'Set body background using Bootstrap bg-(name) (optional).'
   1.12.0:
     date: '2023-03-22'
-    title: 'Bootstrap'
-    description: Add support for Bootstrap 5.
+    title: Bootstrap
+    description: 'Add support for Bootstrap 5.'
   1.11.0:
     date: '2022-12-05'
-    title: 'Label'
-    description: Add label element id.
+    title: Label
+    description: 'Add label element id.'
   1.10.1:
     date: '2022-10-18'
-    title: 'Readme'
+    title: Readme
     description: Improvements.
   1.10.0:
     date: '2022-10-14'
-    title: 'Icon'
+    title: Icon
     description: 'Remove Fontawesome support. If param icon is set it will be for plugin icons/octicons.'
   1.9.0:
     date: '2022-10-13'
-    title: 'Footer'
+    title: Footer
     description: 'Hide footer if no content provided.'
   1.8.0:
     date: '2022-10-12'
@@ -42,7 +46,7 @@ history:
     description: 'Set close button to 20px width.'
   1.7.1:
     date: '2021-05-31'
-    title: 'Buttons'
+    title: Buttons
     description: 'Buttons close and reload was hidden due to wrong url.'
   1.7.0:
     date: '2021-05-25'
@@ -50,47 +54,47 @@ history:
     description: 'Add optional reload button.'
   1.6.0:
     date: '2019-07-25'
-    title: 'CSS'
-    description: CSS fix for IE.
+    title: CSS
+    description: 'CSS fix for IE.'
   1.5.0:
     date: '2019-04-09'
-    title: 'Readme'
-    description: Add readme.md.
+    title: Readme
+    description: 'Add readme.md.'
   1.4.0:
     date: '2019-03-31'
     title: 'Modal xl'
-    description: Add modal-xl support for Bootstrap 4.
+    description: 'Add modal-xl support for Bootstrap 4.'
   1.3.0:
     date: '2019-03-25'
     title: 'Full screen'
-    description: Add class modal-fullscreen for usage with PluginBootstrap4Fs_modal. More mobile friendly.
+    description: 'Add class modal-fullscreen for usage with PluginBootstrap4Fs_modal. More mobile friendly.'
   1.2.1:
     date: '2019-01-22'
-    title: 'Focus'
-    description: Set focus on X button on upper right corner because of modal was scrolling down when focus on button at the bottom.
+    title: Focus
+    description: 'Set focus on X button on upper right corner because of modal was scrolling down when focus on button at the bottom.'
   1.2.0:
     date: '2018-01-08'
     title: 'Close button'
-    description: Set focus on close button.
+    description: 'Set focus on close button.'
   1.1.0:
     date: '2018-01-01'
-    title: 'Footer'
-    description: Add modal footer style display block for Bootstrap 4.
+    title: Footer
+    description: 'Add modal footer style display block for Bootstrap 4.'
   1.0.0:
     date: '2018-01-01'
     title: 'First version'
-    description: First version.
+    description: 'First version.'
 plugin:
   -
     name: icons/octicons
-    version: 1.1.1
+    version: 1.2.0
 sys:
   -
     name: mercury
     version:
-      - 1.0
+      - 1
 php:
   - 7.2
 author: null
-links:
-description: 
+links: null
+description: null
