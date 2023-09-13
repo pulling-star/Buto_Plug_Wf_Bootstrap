@@ -213,7 +213,7 @@ function plugin_wf_bootstrapjs(){
     var default_data = {
       id: 'modal_001', 
       label: 'Bootstrap modal', 
-      content: 'This is some content to show Bootstrap Modal.', 
+      content: '', 
       size: null, 
       url: null, 
       icon: '', 
