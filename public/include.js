@@ -92,7 +92,7 @@ function plugin_wf_bootstrapjs(){
                       type: 'div', 
                       attribute: {class: 'modal-header'},
                       innerHTML: [
-                        {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: [
+                        {type: 'h4', attribute: {class: 'modal-title', onclick: "console.clear();if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: [
                           {type: 'img', innerHTML: null, attribute: {src: '/plugin/icons/octicons/build/svg/'+data.icon+'.svg', style: 'width:20px;margin-top:-4px;margin-right:4px'}},
                           {type: 'span', innerHTML: data.label, attribute: {id: data.id+'_label'}}
                         ]},
@@ -143,7 +143,7 @@ function plugin_wf_bootstrapjs(){
                     type: 'div', 
                     attribute: {class: 'modal-header'},
                     innerHTML: [
-                      {type: 'h4', attribute: {class: 'modal-title', onclick: "if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: [
+                      {type: 'h4', attribute: {class: 'modal-title', onclick: "console.clear();if(typeof PluginWfAjax == 'object'){PluginWfAjax.update('"+data.id+'_body'+"');}"}, innerHTML: [
                         {type: 'img', innerHTML: null, attribute: {src: '/plugin/icons/octicons/build/svg/'+data.icon+'.svg', style: 'width:20px;margin-top:-4px;margin-right:4px'}},
                         {type: 'span', innerHTML: data.label, attribute: {id: data.id+'_label'}}
                       ]},
