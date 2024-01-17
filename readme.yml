@@ -1,0 +1,118 @@
+readme:
+  name: Buto-Plugin-WfBootstrapjs
+  description: |
+    - Create modals with Javascript. Works for Bootstrap 4 and 5.
+    - Create alert.
+    - Create confirm.
+  item:
+    -
+      name: Widgets
+      item:
+        -
+          name: include
+          description: |
+            - Include javascript.
+            - Run i18n.
+            - Add style (IE fix).
+
+            Include in head.
+            ```
+            type: widget
+            data:
+              plugin: wf/bootstrapjs
+              method: include
+            ```
+    -
+      name: Methods
+      item:
+        -
+          name: get_i18n
+          description: |
+            Translations.
+    -
+      name: Usage
+      item:
+        -
+          name: Modal
+          description: |
+            Open modal.
+            ```
+            PluginWfBootstrapjs.modal({});
+            ```
+            id.
+            ```
+            id: 'my_modal'
+            ```
+            Label.
+            ```
+            label: 'My modal'
+            ```
+            Size
+            Size (sm, lg, xl).
+            ```
+            size: 'sm'
+            ```
+            Url.
+            Url (add content to body).
+            ```
+            url: '/_some_/_url_'
+            ```
+            Reload.
+            Reload button.
+            ```
+            btn_reload: true
+            ```
+            Content.
+            Text.
+            Content form text.
+            ```
+            content: 'Some content...'
+            ```
+            Body.
+            Add content to body element.
+            ```
+            document.getElementById('my_modal_body').innerHTML='Add some content!';
+            ```
+            Dom.
+            Add content to body using PluginWfDom.
+            ```
+            PluginWfDom.render([{type: 'div', innerHTML: [{type: 'strong', innerHTML: 'Date'}, {type: 'div', innerHTML: '2001-01-01'}]}], 'my_modal_body');
+            ```
+            Backdrop.
+            Set backdrop to false (default true) to be able to close modal when click besides.
+            ```
+            backdrop: true
+            ```
+            Body background.
+            Set body background using Bootstrap bg-(name) (optional).
+            ```
+            body_bg: 'light'
+            ```
+            Jquery.
+            Hide all modals.
+            ```
+            $('.modal').modal('hide');
+            ```
+            Hide by id.
+            ```
+            $('#element_id').modal('hide');
+            ```
+        -
+          name: Alert
+          description: |
+            ```
+            PluginWfBootstrapjs.alert('My alert text...');
+            ```
+        -
+          name: Confirm
+          description: |
+            ```
+            function delete(any_data){
+              PluginWfBootstrapjs.confirm({content: 'My confirm text...', method: function(){delete_confirmed();}, data: any_data });
+            }
+            function delete_confirmed(any_data){
+              if(PluginWfBootstrapjs.confirm_data.ok){
+                console.log('do something...');
+              }
+            }
+            ```

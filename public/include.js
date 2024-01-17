@@ -344,5 +344,50 @@ function plugin_wf_bootstrapjs(){
     PluginWfAjax.update(id+'_body');
     return null;
   }
+  this.alert = function(content){
+    this.modal({content: content, label: '', backdrop: false});
+  }
+  this.i18n = {};
+  this.confirm_data = {};
+  this.confirm = function(data){
+    data.ok = false;
+    this.confirm_data = data;
+    var content = [
+      {
+        type: 'div', 
+        attribute: {}, 
+        innerHTML: [
+          {
+            type: 'div', 
+            attribute: {class: 'mb-2'},
+            innerHTML: data.content
+          }
+          ,{
+            type: 'a', 
+            attribute: {class: 'btn btn-primary me-1', id: 'modal_wf_bootstrapjs_confirm_ok'},
+            innerHTML: this.i18n.ok
+          }
+          ,{
+            type: 'a', 
+            attribute: {class: 'btn btn-secondary', 'data-bs-dismiss': 'modal', id: 'modal_wf_bootstrapjs_confirm_cancel'},
+            innerHTML: this.i18n.cancel
+          }
+        ]
+      }];
+    this.modal({label: this.i18n.confirm, id: 'modal_wf_bootstrapjs_confirm'});
+    PluginWfDom.render(content, document.getElementById('modal_wf_bootstrapjs_confirm_body'));
+    document.getElementById('modal_wf_bootstrapjs_confirm_ok').addEventListener("click", this.confirm_ok);
+    document.getElementById('modal_wf_bootstrapjs_confirm_cancel').addEventListener("click", this.confirm_cancel);
+  }
+  this.confirm_ok = function(){
+    PluginWfBootstrapjs.confirm_data.ok = true;
+    PluginWfBootstrapjs.confirm_data.method();
+    $('#modal_wf_bootstrapjs_confirm').modal('hide');
+  }
+  this.confirm_cancel = function(){
+    PluginWfBootstrapjs.confirm_data.ok = false;
+    PluginWfBootstrapjs.confirm_data.method();
+    $('#modal_wf_bootstrapjs_confirm').modal('hide');
+  }
 }
 var PluginWfBootstrapjs = new plugin_wf_bootstrapjs();
