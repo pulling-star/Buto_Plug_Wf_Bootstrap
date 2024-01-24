@@ -96,5 +96,12 @@ Hide all modals.</p>
 
 ### Confirm
 
-<p>Open modal.</p>
+<pre><code>function delete(any_data){
+  PluginWfBootstrapjs.confirm({content: 'My confirm text...', method: function(){delete_confirmed();}, data: any_data });
+}
+function delete_confirmed(any_data){
+  if(PluginWfBootstrapjs.confirm_data.ok){
+    console.log('do something...');
+  }
+}</code></pre>
 

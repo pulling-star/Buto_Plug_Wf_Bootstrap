@@ -1,5 +1,9 @@
-version: 1.16.0
+version: 1.16.1
 history:
+  1.16.1:
+    date: '2024-01-24'
+    title: Readme
+    description: 'Readme improvements.'
   1.16.0:
     date: '2024-01-17'
     title: Alert and Confirm
